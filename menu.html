@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Бургеры</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #e0f7fa; padding: 20px; }
-        h2 { text-align: center; color: #006064; margin-bottom: 30px; }
-        .menu { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .burger { border: 1px solid #ccc; border-radius: 10px; padding: 15px; width: 180px; background-color: #b2ebf2; text-align: center; }
-        .burger img { width: 100px; height: 100px; border-radius: 10px; margin-bottom: 10px; }
-        .burger-info { margin-bottom: 10px; color: #004d40; }
-        .burger button { background-color: #00bfa5; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-        .burger button:hover { background-color: #00796b; }
-    </style>
+<meta charset="UTF-8">
+<title>Бургеры</title>
+<style>
+body { font-family: Arial; padding: 20px; background-color: #e0f7fa; }
+.menu { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.burger { border: 1px solid #ccc; border-radius: 10px; padding: 15px; width: 180px; text-align: center; background-color: #b2ebf2; }
+.burger img { width: 100px; height: 100px; border-radius: 10px; margin-bottom: 10px; }
+.burger button { background-color: #00bfa5; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+.burger button:hover { background-color: #00796b; }
+</style>
 </head>
 <body>
-    <h2>🍔 Наши Бургеры</h2>
-    <div class="menu">
-        <div class="burger">
-            <img src="https://menu2go.ru/images/food/447/447_642_20230912141959_4898.png" alt="Сэндвич">
-            <div class="burger-info"><strong>Сэндвич</strong><p>Цена: 350 ₽</p></div>
-            <button onclick="addToCart('Сэндвич', 350)">🛒 В корзину</button>
-        </div>
-        <div class="burger">
-            <img src="https://i.pinimg.com/736x/aa/16/63/aa1663262b97e5747eb120007c511178.jpg" alt="Чизбургер">
-            <div class="burger-info"><strong>Чизбургер</strong><p>Цена: 400 ₽</p></div>
-            <button onclick="addToCart('Чизбургер', 400)">🛒 В корзину</button>
-        </div>
-        <div class="burger">
-            <img src="https://yesdostavka.ru/image/cache/catalog/Burgeri460h460/teriyaki-460x460.jpg" alt="Вкусбургер">
-            <div class="burger-info"><strong>Вкусбургер</strong><p>Цена: 450 ₽</p></div>
-            <button onclick="addToCart('Вкусбургер', 450)">🛒 В корзину</button>
-        </div>
+
+<h2>🍔 Наши бургеры</h2>
+<div class="menu">
+    <div class="burger">
+        <img src="https://menu2go.ru/images/food/447/447_642_20230912141959_4898.png">
+        <p><b>Сэндвич</b><br>Цена: 350 ₽</p>
+        <button onclick="addToCart('Сэндвич', 350)">🛒 В корзину</button>
     </div>
+    <div class="burger">
+        <img src="https://i.pinimg.com/736x/aa/16/63/aa1663262b97e5747eb120007c511178.jpg">
+        <p><b>Чизбургер</b><br>Цена: 400 ₽</p>
+        <button onclick="addToCart('Чизбургер', 400)">🛒 В корзину</button>
+    </div>
+    <div class="burger">
+        <img src="https://yesdostavka.ru/image/cache/catalog/Burgeri460h460/teriyaki-460x460.jpg">
+        <p><b>Вкусбургер</b><br>Цена: 450 ₽</p>
+        <button onclick="addToCart('Вкусбургер', 450)">🛒 В корзину</button>
+    </div>
+</div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        console.log("Telegram.WebApp:", Telegram.WebApp);
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+function addToCart(name, price) {
+    if (Telegram.WebApp) {
+        Telegram.WebApp.sendData(JSON.stringify({name: name, price: price}));
+        alert(name + " добавлен в корзину!");
+    } else {
+        alert("Ошибка: Telegram WebApp не инициализирован!");
+        console.log("Telegram.WebApp undefined");
+    }
+}
+</script>
 
-        function addToCart(name, price) {
-            const data = { name: name, price: price };
-            if (Telegram.WebApp) {
-                Telegram.WebApp.sendData(JSON.stringify(data));
-                alert(`${name} добавлен в корзину!`);
-            } else {
-                alert("Ошибка: Telegram WebApp не инициализирован!");
-            }
-        }
-    </script>
 </body>
 </html>
