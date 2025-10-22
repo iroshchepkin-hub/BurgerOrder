@@ -1,49 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Бургеры</title>
-<style>
-body { font-family: Arial; padding: 20px; background-color: #e0f7fa; }
-.menu { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.burger { border: 1px solid #ccc; border-radius: 10px; padding: 15px; width: 180px; text-align: center; background-color: #b2ebf2; }
-.burger img { width: 100px; height: 100px; border-radius: 10px; margin-bottom: 10px; }
-.burger button { background-color: #00bfa5; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
-.burger button:hover { background-color: #00796b; }
-</style>
+    <meta charset="UTF-8">
+    <title>Бургеры</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #006064;
+            margin-bottom: 30px;
+        }
+        /* Flex-контейнер для карточек */
+        .menu {
+            display: flex;
+            flex-wrap: wrap; /* перенос карточек на новую строку */
+            gap: 20px;       /* расстояние между карточками */
+            justify-content: center;
+        }
+        /* Карточка бургера */
+        .burger {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: calc(33.33% - 20px);           /* три карточки в ряд */
+            min-width: 180px;     /* минимальная ширина для адаптива */
+            background-color: #b2ebf2;
+            display: flex;
+            flex-direction: column; /* элементы внутри вертикально */
+            align-items: center;
+            text-align: center;
+        }
+        .burger img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .burger-info {
+            margin-bottom: 10px;
+            color: #004d40; /* темный текст */
+        }
+        .burger button {
+            background-color: #00bfa5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .burger button:hover {
+            background-color: #00796b;
+        }
+    </style>
 </head>
 <body>
+    <h2>🍔 Наши Бургеры</h2>
+    <div class="menu">
+        <!-- Бургер 1 -->
+        <div class="burger">
+            <img src="https://menu2go.ru/images/food/447/447_642_20230912141959_4898.png" alt="Сэндвич">
+            <div class="burger-info">
+                <strong>Сэндвич</strong>
+                <p>Цена: 350 ₽</p>
+            </div>
+            <button onclick="addToCart('Сэндвич', 350)">🛒 В корзину</button>
+        </div>
 
-<h2>🍔 Наши бургеры</h2>
-<div class="menu">
-    <div class="burger">
-        <img src="https://menu2go.ru/images/food/447/447_642_20230912141959_4898.png">
-        <p><b>Сэндвич</b><br>Цена: 350 ₽</p>
-        <button onclick="addToCart('Сэндвич', 350)">🛒 В корзину</button>
-    </div>
-    <div class="burger">
-        <img src="https://i.pinimg.com/736x/aa/16/63/aa1663262b97e5747eb120007c511178.jpg">
-        <p><b>Чизбургер</b><br>Цена: 400 ₽</p>
-        <button onclick="addToCart('Чизбургер', 400)">🛒 В корзину</button>
-    </div>
-    <div class="burger">
-        <img src="https://yesdostavka.ru/image/cache/catalog/Burgeri460h460/teriyaki-460x460.jpg">
-        <p><b>Вкусбургер</b><br>Цена: 450 ₽</p>
-        <button onclick="addToCart('Вкусбургер', 450)">🛒 В корзину</button>
-    </div>
-</div>
+        <!-- Бургер 2 -->
+        <div class="burger">
+            <img src="https://i.pinimg.com/736x/aa/16/63/aa1663262b97e5747eb120007c511178.jpg" alt="Чизбургер">
+            <div class="burger-info">
+                <strong>Чизбургер</strong>
+                <p>Цена: 400 ₽</p>
+            </div>
+            <button onclick="addToCart('Чизбургер', 400)">🛒 В корзину</button>
+        </div>
 
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <!-- Бургер 3 -->
+        <div class="burger">
+            <img src="https://yesdostavka.ru/image/cache/catalog/Burgeri460h460/teriyaki-460x460.jpg" alt="Вкусбургер">
+            <div class="burger-info">
+                <strong>Вкусбургер</strong>
+                <p>Цена: 450 ₽</p>
+            </div>
+            <button onclick="addToCart('Вкусбургер', 450)">🛒 В корзину</button>
+        </div>
+
+        <!-- Бургер 4 -->
+        <div class="burger">
+            <img src="https://imageproxy.wolt.com/menu/menu-images/627ce435e7f30de29ff6d290/40240444-ea78-11ee-b96b-36370bf2ab1e__0032________________.jpg" alt="Шримпбургер">
+            <div class="burger-info">
+                <strong>Шримпбургер</strong>
+                <p>Цена: 380 ₽</p>
+            </div>
+            <button onclick="addToCart('Шримпбургер', 380)">🛒 В корзину</button>
+        </div>
+
+        <!-- Бургер 5 -->
+        <div class="burger">
+            <img src="https://i.ytimg.com/vi/SptTvSDrBTQ/maxresdefault.jpg" alt="Блэкбургер">
+            <div class="burger-info">
+                <strong>Блэкбургер</strong>
+                <p>Цена: 420 ₽</p>
+            </div>
+            <button onclick="addToCart('Блэкбургер', 420)">🛒 В корзину</button>
+        </div>
+
+        <!-- Бургер 6 -->
+        <div class="burger">
+            <img src="https://cdn.pixabay.com/photo/2024/07/03/13/23/burger-8869971_1280.jpg" alt="Мегабургер">
+            <div class="burger-info">
+                <strong>Мегабургер</strong>
+                <p>Цена: 500 ₽</p>
+            </div>
+            <button onclick="addToCart('Мегабургер', 500)">🛒 В корзину</button>
+        </div>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-function addToCart(name, price) {
+  // Проверка объекта WebApp
+  console.log("Telegram.WebApp:", Telegram.WebApp);
+
+  function addToCart(burgerName, price) {
+    const data = { name: burgerName, price: price };
+
     if (Telegram.WebApp) {
-        Telegram.WebApp.sendData(JSON.stringify({name: name, price: price}));
-        alert(name + " добавлен в корзину!");
+        Telegram.WebApp.sendData(JSON.stringify(data));
+        alert(`${burgerName} добавлен в корзину!`);
     } else {
         alert("Ошибка: Telegram WebApp не инициализирован!");
         console.log("Telegram.WebApp undefined");
     }
-}
+  }
 </script>
 
 </body>
