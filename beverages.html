@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Напитки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: mistyrose;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: blueviolet;
+            margin-bottom: 30px;
+        }
+
+        .beverages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .drink {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            width: calc(33.33% - 20px);
+            min-width: 180px;
+            background-color: violet;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .drink img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .drink-info{
+            margin-bottom: 10px;
+            color: darkslateblue; /* темный текст */
+        }
+        .drink button {
+            background-color: mediumvioletred;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .drink button:hover {
+            background-color: mediumslateblue;
+        }
+    </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        function addToCart(name, price) {
+            Telegram.WebApp.sendData(JSON.stringify({ name, price }));
+            alert(`${name} добавлен в корзину!`);
+        }
+    </script>
+</head>
+<body>
+    <h2>🥤Напитки </h2>
+    <div class="beverages">
+        <div class="drink">
+            <img src="https://i.pinimg.com/736x/e4/3f/34/e43f34bd5fbd7efa997061f55152119e.jpg" alt="Кола">
+            <div class="drink-info">
+                <strong>Кола</strong>
+                <p>Цена: 60 ₽</p>
+            </div>
+            <button onclick="addToCart('Кола', 60)">🛒 В корзину</button>
+        </div>
+
+        <div class="drink">
+            <img src="https://imageproxy.wolt.com/menu/menu-images/shared/2a65a372-1dba-11ef-9ce4-b2c22390ca66_fruit_shake__1_.jpg" alt="Молочный коктейль">
+            <div class="drink-info">
+                <strong>Молочный коктейль</strong>
+                <p>Цена: 150 ₽</p>
+            </div>
+            <button onclick="addToCart('Молочный коктейль', 150)">🛒 В корзину</button>
+        </div>
+
+
+        <div class="drink">
+            <img src="https://i.pinimg.com/736x/5b/4e/69/5b4e69b9b9545263f1682422089ff604.jpg" alt="Вода">
+            <div class="drink-info">
+                <strong>Вода</strong>
+                <p>Цена: 40 ₽</p>
+            </div>
+            <button onclick="addToCart('Вода', 450)">🛒 В корзину</button>
+        </div>
+</body>
+</html>
+
