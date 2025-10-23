@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Меню бургеров</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Arial; padding: 20px; background:#f1f8e9; text-align:center; }
+    .burger { display:inline-block; background:#c5e1a5; padding:12px; margin:10px; border-radius:8px; width:160px; }
+    button { background:#689f38; color:#fff; padding:8px 12px; border:none; border-radius:6px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <h2>🍔 Меню</h2>
+
+  <div class="burger">
+    <strong>Чизбургер</strong>
+    <p>400 ₽</p>
+    <button onclick="addToCart('Чизбургер', 400)">Добавить</button>
+  </div>
+
+  <div class="burger">
+    <strong>Сэндвич</strong>
+    <p>350 ₽</p>
+    <button onclick="addToCart('Сэндвич', 350)">Добавить</button>
+  </div>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    // Проверка при загрузке
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Telegram === 'undefined' || !Telegram.WebApp) {
+        alert("Откройте эту страницу через Telegram (кнопку меню бота).");
+        console.log("Telegram.WebApp undefined");
+        return;
+      }
+      Telegram.WebApp.ready();
+      console.log("WebApp ready, initDataUnsafe:", Telegram.WebApp.initDataUnsafe);
+    });
+
+    function addToCart(name, price) {
+      const payload = { name: name, price: price };
+      console.log("sendData ->", payload);
+      try {
+        Telegram.WebApp.sendData(JSON.stringify(payload));
+        alert(name + " добавлен(а) в корзину");
+      } catch (e) {
+        console.error("sendData error:", e);
+        alert("Ошибка отправки данных WebApp. Смотри консоль.");
+      }
+    }
+  </script>
+</body>
+</html>
