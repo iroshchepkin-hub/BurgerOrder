@@ -120,21 +120,11 @@
             <button onclick="addToCart('Мегабургер', 500)">🛒 В корзину</button>
         </div>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-  // Проверка объекта WebApp
-  console.log("Telegram.WebApp:", Telegram.WebApp);
-
-  function addToCart(burgerName, price) {
-    const data = { name: burgerName, price: price };
-
-    if (Telegram.WebApp) {
-        Telegram.WebApp.sendData(JSON.stringify(data));
-        alert(`${burgerName} добавлен в корзину!`);
-    } else {
-        alert("Ошибка: Telegram WebApp не инициализирован!");
-        console.log("Telegram.WebApp undefined");
-    }
+  function addToCart(name, price) {
+      Telegram.WebApp.sendData(JSON.stringify({ name, price }));
+      alert(`${name} добавлен в корзину!`);
   }
 </script>
 
