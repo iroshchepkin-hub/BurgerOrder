@@ -59,27 +59,17 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <script>
+let cart = [];
+
 function addToCart(name, price) {
-    try {
-        // Отправка данных в бот
-        // Telegram.WebApp.sendData(JSON.stringify({ name, price }));
+    cart.push({ name, price });
+    alert(`${name} добавлен в корзину!`);
+}
 
-        // Вместо sendData используем fetch напрямую
-        fetch(`https://api.telegram.org/bot'7568660272:AAFWyC0n7OxG69RkpEZv5_FWhVkNKuv4-D0'/sendMessage`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                chat_id: Telegram.WebApp.initDataUnsafe.user.id,
-                text: JSON.stringify({ name, price })
-            })
-        });
+function sendCartToBot() {
+    Telegram.WebApp.sendData(JSON.stringify(cart));
 
-        // Локальное уведомление
-        alert(`${name} добавлен в корзину!`);
-    } catch (err) {
-        console.error(err);
-        alert("Ошибка при добавлении товара.");
-    }
+
 }
 </script>
 
