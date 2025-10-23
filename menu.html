@@ -58,7 +58,8 @@
     </style>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <script>
+
+<script>
 let cart = [];
 
 function addToCart(name, price) {
@@ -67,11 +68,26 @@ function addToCart(name, price) {
 }
 
 function sendCartToBot() {
-    Telegram.WebApp.sendData(JSON.stringify(cart));
+    const token = "7568660272:AAFWyC0n7OxG69RkpEZv5_FWhVkNKuv4-D0";
+    const chat_id = Telegram.WebApp.initDataUnsafe.user.id;
 
-
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: chat_id,
+            text: JSON.stringify(cart)
+        })
+    }).then(() => {
+        alert("Корзина отправлена боту!");
+        cart = []; // очищаем локальную корзину
+    }).catch((err) => {
+        console.error(err);
+        alert("Ошибка при отправке корзины.");
+    });
 }
 </script>
+
 
 </head>
 <body>
