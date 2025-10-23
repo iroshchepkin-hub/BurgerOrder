@@ -59,10 +59,10 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <script>
-  function addToCart(name, price) {
-      Telegram.WebApp.sendData(JSON.stringify({ name, price }));
-      alert(`${name} добавлен в корзину!`);
-  }
+        function addToCart(name, price) {
+            Telegram.WebApp.sendData(JSON.stringify({ name, price }));
+            alert(`${name} добавлен в корзину!`);
+        }
     </script>
 </head>
 <body>
