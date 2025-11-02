@@ -11,6 +11,19 @@ import json
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from aiohttp import web
+import asyncio
+import threading
+
+async def handle(request):
+    return web.Response(text="Bot is running!")
+
+def run_server():
+    app = web.Application()
+    app.add_routes([web.get('/', handle)])
+    web.run_app(app, port=8000)
+
+threading.Thread(target=run_server).start()
 
 load_dotenv()
 
