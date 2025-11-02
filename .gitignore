@@ -1,0 +1,13 @@
+# Python кеши
+__pycache__/
+*.pyc
+
+# Локальная база данных
+cart.db
+
+# Секреты
+.env
+
+# IDE
+.vscode/
+.idea/
